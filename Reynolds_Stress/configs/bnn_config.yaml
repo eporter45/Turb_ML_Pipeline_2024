@@ -1,0 +1,54 @@
+trial_name: 'phill_inter'
+evaluate_training_predictions: True
+
+features:
+  input: ["Ux", "Uy"] #, 'dUx_dx', 'dUx_dy', 'dUy_dy']
+  output: ['uu', 'uv', 'uw', 'vv', 'vw', 'ww']
+  transport_feature: True
+  transport_norm: ''
+
+paths:
+  output_dir: "RST_outputs"
+  name: "test3_phill_inter"
+
+model:
+  type: "BNN"
+  branch_layers: [5, 5, 5]
+  branch_activation: False
+  trunk_layers: [64, 32]
+  dropout: 0.05
+  hidden_activation: "leakyrelu"
+  output_activation: ''
+
+training:
+  feature_norm: 'nondim_local'
+  scale_norm: 'minmax'        # applies per-case [0,1] normalization
+  norm_labels: True
+  lamb: 0.00001
+  eval_every: 10
+  epochs: 2000
+  batch_size: 2048
+  lr: 0.007
+  loss_case_scaling:
+    loss_mode: 'tke'     #modes = ['tke', 'tke_sq']
+    loss_type: ''       #sum or mean
+    loss_scale: ''      #max or mean of loss vector
+  loss_terms:
+    mse_weight: 1
+    tke: True
+    tke_weight: 1
+  scheduler:
+    enabled: True
+    type: "linear"
+    step_size: [250, 0.0001]      #for linear use [start_epoch, tgt_pct], for multistep do [step_1, step_2, ... step_n]
+    gamma: 0.6            #these are for reduce on plateau
+    factor: 0.5
+    patience: 150
+    min_lr: 1e-6
+    cooldown: 10
+    verbose: True
+
+
+
+
+

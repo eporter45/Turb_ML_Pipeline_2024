@@ -1,0 +1,60 @@
+evaluate_training_predictions: true
+features:
+  input:
+  - Ux
+  - Uy
+  - p
+  - wallDistance
+  - dp_0
+  - dp_1
+  output:
+  - uu
+  - uv
+  - uw
+  - vv
+  - vw
+  - ww
+  transport_feature: true
+  transport_norm: log
+model:
+  activation: leakyrelu
+  dropout: 0.05
+  layers: 30
+  seed: 42
+  type: FCN
+  width: 7
+paths:
+  data: Data
+  name: k_loss_test1
+  output_dir: RST_outputs
+training:
+  batch_size: 2048
+  epochs: 2000
+  eval_every: 10
+  feature_norm: nondim_local
+  lamb: 0.0001
+  loss_case_scaling:
+    loss_mode: tke
+    loss_scale: ''
+    loss_type: ''
+  loss_terms:
+    mse_weight: 1
+    tke: true
+    tke_weight: 1
+    use_phys_loss: 'true'
+  lr: 0.005
+  norm_labels: true
+  scale_norm: minmax
+  scheduler:
+    cooldown: 10
+    enabled: true
+    factor: 0.8
+    gamma: 0.6
+    min_lr: 1e-6
+    patience: 100
+    step_size:
+    - 250
+    - 0.001
+    type: linear
+    verbose: false
+trial_name: phill_inter

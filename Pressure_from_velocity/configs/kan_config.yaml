@@ -1,0 +1,53 @@
+trial_name: "bump_inter"
+evaluate_training_predictions: True
+features:
+  input: ["Ux", "Uy"] #'dUx_dx', 'dUx_dy', 'dUy_dx', 'dUy_dy']
+  output: ["p"]
+  transport_feature: True
+  transport_norm: 'mean'
+
+
+paths:
+  output_dir: "final_outputs/"
+  name: "kan_test_add"
+  data: 'Data'
+
+
+model:
+  type: "kan"
+  shape: [[3,0], [6, 0], [6, 0], [1,0]]      # [input_size, hidden1, hidden2, ..., output_size]
+  grid: 15
+  grid_range: [-1.2, 1.2]
+  spline_order: 3
+  seed: 42
+  update_grid: true
+  use_kan: true
+
+training:
+  feature_norm: 'nondim_local'
+  scale_norm: 'minmax'        # applies per-case [0,1] normalization
+  norm_labels: False
+  use_fit: False
+  opt: "Adam"
+  seed: 42
+  lamb: 0.01
+  eval_every: 5
+  epochs: 300
+  batch_size: 16384
+  lr: 0.005
+  loss_case_scaling:
+    loss_mode: 'tke'     #modes = ['tke', 'tke_sq']
+    loss_type: ''       #sum or mean
+    loss_scale: ''      #max or mean of loss vector
+  loss_terms:
+    mse_weight: 1
+    tke: True
+    tke_weight: 1
+  scheduler:
+    enabled: True
+    type: "linear"
+    step_size: [50, 0.02]      #for linear use [start_epoch, tgt_pct], for multistep do [step_1, step_2, ... step_n]
+    gamma: 0.7
+
+
+

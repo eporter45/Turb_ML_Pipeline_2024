@@ -1,0 +1,2 @@
+Total test loss: 1.853288
+Average test loss: 0.926644

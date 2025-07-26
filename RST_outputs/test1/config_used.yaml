@@ -1,0 +1,52 @@
+evaluate_training_predictions: true
+features:
+  input:
+  - Ux
+  - Uy
+  - dUx_dx
+  - dUx_dy
+  - dUy_dy
+  - dUy_dx
+  output:
+  - uu
+  - uv
+  - uw
+  - vv
+  - vw
+  - ww
+  transport_feature: false
+  transport_norm: log
+model:
+  activation: leakyrelu
+  dropout: 0.05
+  layers: 10
+  seed: 42
+  type: FCN
+  width: 10
+paths:
+  data: Data
+  name: test1
+  output_dir: RST_outputs
+training:
+  batch_size: 2048
+  epochs: 5000
+  eval_every: 10
+  feature_norm: ''
+  lamb: 0.0001
+  loss_mode: tke
+  lr: 0.05
+  norm_labels: true
+  scale_norm: minmax
+  scheduler:
+    cooldown: 10
+    enabled: true
+    factor: 0.8
+    gamma: 0.6
+    min_lr: 1e-6
+    patience: 100
+    step_size:
+    - 250
+    - 0.001
+    type: linear
+    verbose: false
+trial_name: phill_inter

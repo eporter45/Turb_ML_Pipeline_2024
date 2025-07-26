@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:eporter45/Turb_ML_Pipeline_2024.git
+	fetch = +refs/*:refs/*
+	mirror = true

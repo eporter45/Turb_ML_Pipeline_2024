@@ -1,0 +1,31 @@
+Simulation outline for predicting pressure from velocity
+
+Model Inputs
+Inputs: Ux, Uy
+Outputs: P
+
+Simulation Inputs
+- hyperparameters
+- model inputs
+- which trial from test cases to run
+    inter, extrap or big. Start with inter
+- model type (FCN vs KAN)
+- data
+
+Hyperparameters
+- start at 1500 epochs for FCN, same for KAN
+- apply weights to the xz and yz components to push them to zero
+-
+
+For FCN
+- start w 10x10
+- then shallow, wide (3/4deep, 32 wide)
+- use scheduler at first
+- dropout to 0.1 at first
+
+For KAN
+- start with [2, 5, 5]
+- try and implement pruning
+- see where auto encoding could be applied
+- make sure you apply [-1,1] gating to the weighted "activation"
+

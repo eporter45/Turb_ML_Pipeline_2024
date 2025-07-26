@@ -1,0 +1,14 @@
+plotting all psudocode
+
+
+def plot_multipreds(y_t, y_p, save_dir, case_name, features grid_dicts, vmin_shared)
+
+
+
+
+
+def make_plots(y_true_list, y_pred_list, case_names, save_dir, grid_dicts)
+    for y_t, y_p, name in zip(y_true_list, y_pred_list, case_names)
+        plot_multipreds_case(y_t, y_p, save_dir, name, features, grid_dict=grid_dicts[name], vmin_shared=True)
+        plot_multipreds_case(y_t, y_p, save_dir, name, features, grid_dict=grid_dicts[name], vmin_shared=True)
+

@@ -1,0 +1,2 @@
+Total test loss: 0.000000
+Average test loss: 0.000000

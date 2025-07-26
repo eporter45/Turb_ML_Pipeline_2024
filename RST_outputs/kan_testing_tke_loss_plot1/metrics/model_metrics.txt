@@ -1,0 +1,20 @@
+=== Model Metrics Summary ===
+
+sum_abs_diff: 3.960546
+
+mean_per_point: 0.000045
+
+sum_per_component: [1.350759, 0.277474, 0.718402, 0.278006, 0.857588, 0.478316]
+
+avg_per_component: [0.000092, 0.000019, 0.000049, 0.000019, 0.000058, 0.000032]
+
+median_of_points: [0.000084, 0.000020, 0.000052, 0.000019, 0.000053, 0.000024]
+
+correlation_coefficient: 0.078283
+
+net_accuracy: -3.935055
+
+num_params: 16239.000000
+
+frobenius_norm: 0.000140
+

@@ -1,0 +1,54 @@
+trial_name: "phill_inter"
+evaluate_training_predictions: True
+features:
+  input: ['Ux', 'Uy','wallDistance', 'p', 'dp_0', 'dp_1']#["Ux", "Uy", 'dUx_dx', 'dUx_dy', 'dUy_dy', 'p', 'wallDistance']
+  output: ['uu', 'uv', 'uw', 'vv', 'vw', 'ww']
+  transport_feature: True
+  transport_norm: 'log'
+
+
+paths:
+  output_dir: "rst_outputs"
+  name: "kan_testing_tke_loss_plot2"
+  data: 'Data'
+
+
+model:
+  type: "kan"
+  shape: [[7,0], [6, 6], [6, 6], [6,6], [6,0]]      # [input_size, hidden1, hidden2, ..., output_size]
+  grid: 20
+  grid_range: [-1.1, 1.1]
+  spline_order: 3
+  seed: 42
+  update_grid: true
+  use_kan: true
+
+training:
+  feature_norm: 'nondim_local'
+  scale_norm: 'minmax'        # applies per-case [0,1] normalization
+  norm_labels: False
+  use_fit: False
+  opt: "Adam"
+  seed: 21
+  lamb: 0.001
+  eval_every: 5
+  epochs: 100
+  batch_size: 2048
+  lr: 0.01
+  loss_case_scaling:
+    loss_mode: 'tke'     #modes = ['tke', 'tke_sq']
+    loss_type: ''       #sum or mean
+    loss_scale: ''      #max or mean of loss vector
+  loss_terms:
+      mse_weight: 1
+      use_phys_loss: 'true'
+      tke: True
+      tke_weight: 2
+  scheduler:
+    enabled: True
+    type: "linear"
+    step_size: [5, 0.001]      #for linear use [start_epoch, tgt_pct], for multistep do [step_1, step_2, ... step_n]
+    gamma: 0.7
+
+
+

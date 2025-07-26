@@ -1,0 +1,30 @@
+trial_name: "bump_inter"
+
+features:
+  input: ["Ux", "Uy"]
+  output: ["p"]
+
+model:
+  type: "FCN_Ten"
+  hidden_dim: 10
+  layers: 10
+  dropout: 0.2
+  activation: "leakyrelu"
+
+training:
+  eval_every: 50
+  epochs: 1500
+  batch_size: 1024
+  lr: 0.01
+  scheduler:
+    enabled: True  # ← NEW
+    type: "StepLR"
+    step_size: 250
+    gamma: 0.7
+  loss_weights:
+    enabled: false  # ← NEW
+    z_weights: [ 1, 1, 2, 1, 2, 1 ]  # Only used if enabled
+
+paths:
+  output_dir: "outputs/pressure_extrap/FCN_scheduler"
+  name: "test_1"

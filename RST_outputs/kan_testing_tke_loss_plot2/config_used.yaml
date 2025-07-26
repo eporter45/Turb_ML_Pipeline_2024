@@ -1,0 +1,72 @@
+evaluate_training_predictions: true
+features:
+  input:
+  - Ux
+  - Uy
+  - wallDistance
+  - p
+  - dp_0
+  - dp_1
+  output:
+  - uu
+  - uv
+  - uw
+  - vv
+  - vw
+  - ww
+  transport_feature: true
+  transport_norm: log
+model:
+  grid: 20
+  grid_range:
+  - -1.1
+  - 1.1
+  seed: 42
+  shape:
+  - - 7
+    - 0
+  - - 6
+    - 6
+  - - 6
+    - 6
+  - - 6
+    - 6
+  - - 6
+    - 0
+  spline_order: 3
+  type: kan
+  update_grid: true
+  use_kan: true
+paths:
+  data: Data
+  name: kan_testing_tke_loss_plot2
+  output_dir: rst_outputs
+training:
+  batch_size: 2048
+  epochs: 100
+  eval_every: 5
+  feature_norm: nondim_local
+  lamb: 0.001
+  loss_case_scaling:
+    loss_mode: tke
+    loss_scale: ''
+    loss_type: ''
+  loss_terms:
+    mse_weight: 1
+    tke: true
+    tke_weight: 2
+    use_phys_loss: 'true'
+  lr: 0.001
+  norm_labels: false
+  opt: Adam
+  scale_norm: minmax
+  scheduler:
+    enabled: true
+    gamma: 0.7
+    step_size:
+    - 5
+    - 0.001
+    type: linear
+  seed: 21
+  use_fit: false
+trial_name: phill_inter

@@ -1,0 +1,24 @@
+# Ignore data and output folders
+outputs/
+Data/
+data/
+final_outputs/
+
+# Ignore Python/ML cruft
+__pycache__/
+*.pyc
+*.ipynb_checkpoints/
+*.h5
+*.pth
+*.npz
+*.zip
+
+# Ignore environments
+envs/
+venvs/
+.venv/
+ENV/
+env/
+
+# macOS system files
+.DS_Store

@@ -1,0 +1,17 @@
+# requirements_gpu.txt (CUDA 11.4 compatible)
+torch==1.12.1+cu113
+torchvision==0.13.1+cu113
+torchaudio==0.12.1
+-f https://download.pytorch.org/whl/torch_stable.html
+
+# Rest of your packages
+numpy<2.0
+scikit-learn
+matplotlib==3.10.1
+seaborn==0.13.2
+pandas
+scipy
+protobuf
+absl-py
+tqdm
+requests

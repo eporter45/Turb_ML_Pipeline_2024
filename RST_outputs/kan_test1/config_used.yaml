@@ -1,0 +1,65 @@
+evaluate_training_predictions: true
+features:
+  input:
+  - Ux
+  - Uy
+  - p
+  - dp_0
+  - dp_1
+  - S_0,1
+  - R_0,1
+  - wallDistance
+  output:
+  - uu
+  - uv
+  - uw
+  - vv
+  - vw
+  - ww
+  transport_feature: false
+  transport_norm: mean
+model:
+  grid: 15
+  grid_range:
+  - -1.2
+  - 1.2
+  seed: 42
+  shape:
+  - - 8
+    - 0
+  - - 6
+    - 6
+  - - 6
+    - 6
+  - - 6
+    - 0
+  spline_order: 3
+  type: kan
+  update_grid: true
+  use_kan: true
+paths:
+  data: Data
+  name: kan_test1
+  output_dir: rst_outputs
+training:
+  batch_size: 2048
+  epochs: 200
+  eval_every: 5
+  feature_norm: nondim_local
+  lamb: 0.01
+  loss_mode: tke_sq
+  loss_type: ''
+  lr: 0.1
+  norm_labels: false
+  opt: Adam
+  scale_norm: minmax
+  scheduler:
+    enabled: true
+    gamma: 0.7
+    step_size:
+    - 50
+    - 0.01
+    type: linear
+  seed: 21
+  use_fit: false
+trial_name: full_inter
