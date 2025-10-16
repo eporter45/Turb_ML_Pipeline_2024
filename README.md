@@ -25,7 +25,7 @@ This marks the **first iteration** of my turbulence modeling work — serving as
 
 | Category | Example Models | Description |
 |-----------|----------------|--------------|
-| **Classical ML** | Linear Regression, Random Forest, XGBoost | Baseline models for interpretability and feature relevance |
+| **Classical ML** | Linear Regression | Baseline models for interpretability and feature relevance |
 | **Neural Networks** | Fully Connected NN, CNNs | Learned mappings from flow field features to turbulent quantities |
 | **Hybrid / Experimental** | Dimensionality-scaled networks | Early exploration of physics-informed regularization techniques |
 
